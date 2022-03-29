@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gresources>
+    <gresource>
+        <file compressed="true">main-window.ui</file>
+        <file compressed="true">feed-list.ui</file>
+        <file compressed="true">article-list.ui</file>
+    </gresource>
+</gresources>
