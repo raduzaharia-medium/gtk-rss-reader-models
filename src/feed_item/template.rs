@@ -47,8 +47,18 @@ impl ObjectImpl for FeedItemTemplate {
 
     fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> Value {
         match pspec.name() {
-            "name" => self.name.take().to_value(),
-            "url" => self.url.take().to_value(),
+            "name" => {
+                let result = self.name.take();
+
+                self.name.set(result.clone());
+                result.to_value()
+            }
+            "url" => {
+                let result = self.url.take();
+
+                self.url.set(result.clone());
+                result.to_value()
+            }
             _ => unimplemented!(),
         }
     }
