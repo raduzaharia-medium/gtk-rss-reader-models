@@ -47,8 +47,18 @@ impl ObjectImpl for ArticleItemTemplate {
 
     fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> Value {
         match pspec.name() {
-            "title" => self.title.take().to_value(),
-            "summary" => self.summary.take().to_value(),
+            "title" => {
+                let result = self.title.take();
+
+                self.title.set(result.clone());
+                result.to_value()
+            }
+            "summary" => {
+                let result = self.summary.take();
+
+                self.summary.set(result.clone());
+                result.to_value()
+            }
             _ => unimplemented!(),
         }
     }
